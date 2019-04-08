@@ -5,13 +5,14 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import com.example.exercicio.controller.UserController
 import com.example.exercicio.model.UserBO
 import com.example.exercicio.repository.UserRepository
 import com.example.exercicio.view.ListScreen
 
 class MainActivity : AppCompatActivity() {
 
-    var user: UserBO? = null
+    var userController = UserController()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +23,9 @@ class MainActivity : AppCompatActivity() {
         val password = findViewById(R.id.password) as EditText
 
         login.setOnClickListener() {
-            val dbHandler = UserRepository(this, null, null, 1)
-            val user = UserBO(email.text.toString(), password.text.toString())
-            this.user = dbHandler.findUser(user)
             val intent = Intent(this, ListScreen::class.java)
-            if(this.user != null) {
+            val user = UserBO(email.text.toString(), password.text.toString())
+            if(userController.login(this, user)) {
                 startActivity(intent)
             }
         }
