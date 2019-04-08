@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.EditText
 import com.example.exercicio.controller.UserController
 import com.example.exercicio.model.UserBO
-import com.example.exercicio.repository.UserRepository
 import com.example.exercicio.view.ListScreen
 
 class MainActivity : AppCompatActivity() {
