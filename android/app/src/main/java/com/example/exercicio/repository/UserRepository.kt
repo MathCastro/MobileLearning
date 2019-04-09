@@ -35,7 +35,7 @@ class UserRepository(context: Context, name: String?, factory: SQLiteDatabase.Cu
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
 
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER)
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CALENDAR)
+        db.execSQL("DROP TABLE IF EXISTS" + TABLE_CALENDAR)
         onCreate(db)
 
     }
