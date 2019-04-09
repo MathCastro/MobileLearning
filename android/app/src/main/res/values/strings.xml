@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Exercicio</string>
+    <string name="shared_pref">loggedUser</string>
 </resources>

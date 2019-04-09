@@ -8,6 +8,11 @@ import android.widget.EditText
 import com.example.exercicio.controller.UserController
 import com.example.exercicio.model.UserBO
 import com.example.exercicio.view.ListScreen
+import android.R.id.edit
+import android.content.Context
+import android.content.SharedPreferences
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,10 +26,11 @@ class MainActivity : AppCompatActivity() {
         val email = findViewById(R.id.email) as EditText
         val password = findViewById(R.id.password) as EditText
 
-        login.setOnClickListener() {
+        login.setOnClickListener {
             val intent = Intent(this, ListScreen::class.java)
             val user = UserBO(email.text.toString(), password.text.toString())
             if(userController.login(this, user)) {
+                userController.putLoggedUser(email.text.toString(), this)
                 startActivity(intent)
             }
         }
