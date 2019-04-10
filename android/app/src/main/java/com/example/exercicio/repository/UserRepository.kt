@@ -18,7 +18,7 @@ class UserRepository(context: Context, name: String?, factory: SQLiteDatabase.Cu
 
         val CREATE_CALENDAR_TABLE = ("CREATE TABLE " + TABLE_CALENDAR + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY,"
-                + COLUMN_CALENDAR + " TEXT,"
+                + COLUMN_CALENDAR + " LONG,"
                 + COLUMN_ID_USER + " INTEGER,"
                 + "FOREIGN KEY (" + COLUMN_ID_USER + ") REFERENCES " + TABLE_USER + "(" + COLUMN_ID + ")" + ")")
         db?.execSQL(CREATE_CALENDAR_TABLE)
@@ -54,12 +54,36 @@ class UserRepository(context: Context, name: String?, factory: SQLiteDatabase.Cu
     fun addCalendar(calendar: CalendarBO) {
         val values = ContentValues()
         values.put(COLUMN_CALENDAR, calendar.calendar)
-        values.put(COLUMN_PASSWORD, calendar.id_user)
+        values.put(COLUMN_ID_USER, calendar.id_user)
 
         val db = this.writableDatabase
 
         db.insert(TABLE_CALENDAR, null, values)
         db.close()
+    }
+
+    fun findLastCalendar(): CalendarBO? {
+        val query = "SELECT * FROM $TABLE_CALENDAR ORDER BY $COLUMN_ID DESC LIMIT 1"
+
+        val db = this.writableDatabase
+
+        val cursor = db.rawQuery(query, null)
+
+        var findedCalendar: CalendarBO? = null
+
+        if(cursor.moveToFirst()) {
+            cursor.moveToFirst()
+
+            val id = Integer.parseInt(cursor.getString(0))
+            val calendar = cursor.getString(1)
+            val id_user = Integer.parseInt(cursor.getString(2))
+
+            findedCalendar = CalendarBO(id, calendar, id_user)
+            cursor.close()
+        }
+
+        db.close()
+        return findedCalendar
     }
 
     fun findUser(user: UserBO): UserBO? {

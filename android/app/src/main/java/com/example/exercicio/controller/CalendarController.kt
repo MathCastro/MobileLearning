@@ -17,4 +17,9 @@ class CalendarController {
         var calendar = CalendarBO(dateTime, user?.id!!)
         dbHandler.addCalendar(CalendarBO(dateTime, user?.id!!))
     }
+
+    fun getLastCalendar(context: Context, activity: AppCompatActivity): CalendarBO? {
+        var userRepository = UserRepository(context, null, null, 1)
+        return userRepository.findLastCalendar()
+    }
 }

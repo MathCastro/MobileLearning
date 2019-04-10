@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.CalendarView
 import android.widget.EditText
+import android.widget.TextView
 import com.example.exercicio.R
 import com.example.exercicio.controller.CalendarController
 import com.example.exercicio.controller.UserController
@@ -23,11 +24,13 @@ class CalendarActivity : AppCompatActivity() {
     }
 
     fun confirm(view: View) {
+        var text = findViewById<TextView>(R.id.textView)
         var calendar = findViewById<CalendarView>(R.id.calendarView)
         val dateTime = calendar?.getDate().toString()
         this.calendarController.addCalendar(this, dateTime, this)
+        text.setText(this.calendarController.getLastCalendar(this,this)?.calendar)
         val intent = Intent(this, ListScreen::class.java)
-        startActivity(intent)
+//        startActivity(intent)
     }
 
 }

@@ -25,7 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/email" android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp" android:hint="Password"/>
+            android:layout_marginEnd="50dp" android:hint="@string/password"/>
     <Button
             android:text="Login"
             android:layout_width="200dp"
