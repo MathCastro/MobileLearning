@@ -7,4 +7,8 @@
     <string name="idiom">IDIOM</string>
     <string name="text">TEXT</string>
     <string name="confirm">CONFIRM</string>
+    <string-array name="idiom_array">
+        <item>English</item>
+        <item>Português</item>
+    </string-array>
 </resources>
