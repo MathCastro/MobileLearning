@@ -11,21 +11,27 @@ import android.widget.ListView
 import com.example.exercicio.R
 import com.example.exercicio.model.UserBO
 import android.widget.SimpleAdapter
-
-
-
+import com.example.exercicio.controller.CalendarController
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class ListScreen : AppCompatActivity() {
+
+    var calendarController = CalendarController()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_screen)
 
         var options: Array<String> = resources.getStringArray(R.array.options_array)
-        val descArr = arrayOf("Jerry", "Male", "43", "Singapore", "webmaster@dev2qa.com")
+        val descArr = arrayOf("Jerry", "", "", "", "")
 
         val itemDataList = ArrayList<Map<String, Any>>()
+
+        var date = (this.calendarController.getLastCalendar(this,this)?.calendar!!).toLong()
+
+        descArr.set(0, getDate(date, "dd/MM/yyyy"))
 
         val titleLen = options.size
         for (i in 0 until titleLen) {
@@ -84,6 +90,16 @@ class ListScreen : AppCompatActivity() {
     fun text(view: View? = null) {
         val intent = Intent(this, TextActivity::class.java)
         startActivity(intent)
+    }
+
+    fun getDate(milliSeconds: Long, dateFormat: String): String {
+        // Create a DateFormatter object for displaying date in specified format.
+        val formatter = SimpleDateFormat(dateFormat)
+
+        // Create a calendar object that will convert the date and time value in milliseconds to date.
+        val calendar = Calendar.getInstance()
+        calendar.setTimeInMillis(milliSeconds)
+        return formatter.format(calendar.getTime())
     }
 
 }

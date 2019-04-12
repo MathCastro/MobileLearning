@@ -24,13 +24,11 @@ class CalendarActivity : AppCompatActivity() {
     }
 
     fun confirm(view: View) {
-        var text = findViewById<TextView>(R.id.textView)
         var calendar = findViewById<CalendarView>(R.id.calendarView)
         val dateTime = calendar?.getDate().toString()
         this.calendarController.addCalendar(this, dateTime, this)
-        text.setText(this.calendarController.getLastCalendar(this,this)?.calendar)
         val intent = Intent(this, ListScreen::class.java)
-//        startActivity(intent)
+        startActivity(intent)
     }
 
 }
