@@ -1,14 +1,13 @@
 package com.example.exercicio.repository
 
+import android.content.ContentValues
+import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.content.Context
-import android.content.ContentValues
 import com.example.exercicio.model.CalendarBO
-import com.example.exercicio.model.TextBO
 import com.example.exercicio.model.UserBO
 
-class UserRepository(context: Context, name: String?, factory: SQLiteDatabase.CursorFactory?, version: Int) : SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
+class TextRepository(context: Context, name: String?, factory: SQLiteDatabase.CursorFactory?, version: Int) : SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase?) {
         val CREATE_USER_TABLE = ("CREATE TABLE " + TABLE_USER + "("
@@ -17,19 +16,12 @@ class UserRepository(context: Context, name: String?, factory: SQLiteDatabase.Cu
                 + COLUMN_PASSWORD + " TEXT" + ")")
         db?.execSQL(CREATE_USER_TABLE)
 
-        val CREATE_CALENDAR_TABLE = ("CREATE TABLE " + TABLE_CALENDAR + "("
-                + COLUMN_ID + " INTEGER PRIMARY KEY,"
-                + COLUMN_CALENDAR + " LONG,"
-                + COLUMN_ID_USER + " INTEGER,"
-                + "FOREIGN KEY (" + COLUMN_ID_USER + ") REFERENCES " + TABLE_USER + "(" + COLUMN_ID + ")" + ")")
-        db?.execSQL(CREATE_CALENDAR_TABLE)
-
-        val CREATE_TEXT_TABLE = ("CREATE TABLE " + TABLE_TEXT + "("
+        val CREATE_CALENDAR_TABLE = ("CREATE TABLE " + TABLE_TEXT + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY,"
                 + COLUMN_TEXT + " TEXT,"
                 + COLUMN_ID_USER + " INTEGER,"
                 + "FOREIGN KEY (" + COLUMN_ID_USER + ") REFERENCES " + TABLE_USER + "(" + COLUMN_ID + ")" + ")")
-        db?.execSQL(CREATE_TEXT_TABLE)
+        db?.execSQL(CREATE_CALENDAR_TABLE)
 
         val values = ContentValues()
         values.put(COLUMN_ID, 1)
@@ -44,7 +36,6 @@ class UserRepository(context: Context, name: String?, factory: SQLiteDatabase.Cu
 
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER)
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CALENDAR)
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TEXT)
         onCreate(db)
 
     }
@@ -68,17 +59,6 @@ class UserRepository(context: Context, name: String?, factory: SQLiteDatabase.Cu
         val db = this.writableDatabase
 
         db.insert(TABLE_CALENDAR, null, values)
-        db.close()
-    }
-
-    fun addText(text: TextBO) {
-        val values = ContentValues()
-        values.put(COLUMN_TEXT, text.text)
-        values.put(COLUMN_ID_USER, text.id_user)
-
-        val db = this.writableDatabase
-
-        db.insert(TABLE_TEXT, null, values)
         db.close()
     }
 
@@ -160,15 +140,15 @@ class UserRepository(context: Context, name: String?, factory: SQLiteDatabase.Cu
         private val DATABASE_VERSION = 1
         private val DATABASE_NAME = "userDB.db"
         val TABLE_USER = "user"
-        val TABLE_CALENDAR = "calendar"
         val TABLE_TEXT = "text"
+        val TABLE_CALENDAR = "calendar"
 
         val COLUMN_ID = "_id"
         val COLUMN_EMAIL = "email"
+        val COLUMN_TEXT = "email"
         val COLUMN_PASSWORD = "password"
         val COLUMN_CALENDAR = "calendar"
         val COLUMN_ID_USER = "id_user"
-        val COLUMN_TEXT = "text"
 
     }
 
