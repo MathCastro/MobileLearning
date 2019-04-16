@@ -12,12 +12,15 @@ import com.example.exercicio.model.TextBO
 import com.example.exercicio.repository.UserRepository
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.TextView
 
 
 class TextActivity : AppCompatActivity() {
 
     var userController = UserController()
     var texts = mutableListOf<String>()
+    var values = mutableListOf<TextBO>()
+    var listView1: ListView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,22 +28,29 @@ class TextActivity : AppCompatActivity() {
 
         val dbHandler = UserRepository(this, null, null, 1)
 
-        val values = dbHandler.findText()
+        values = dbHandler.findText()!!
 
-        val listView1 = findViewById(R.id.text_list) as ListView
+        listView1 = findViewById(R.id.text_list) as ListView
 
         if(values != null) {
 
             for(elem in values) {
-                texts.add(elem.text!!)
+                var texto = elem.text!!
+                if(texto.length > 40) {
+                    texts.add(texto.take(50) + "...")
+                } else {
+                    texts.add(elem.text!!)
+                }
             }
 
             val adapter = ArrayAdapter(
                 this,
                 android.R.layout.simple_list_item_1, texts
             )
-            listView1.setAdapter(adapter)
+            listView1!!.setAdapter(adapter)
         }
+
+        setupListViewListener()
     }
 
     fun addText(view: View) {
@@ -54,9 +64,23 @@ class TextActivity : AppCompatActivity() {
                 val text = taskEditText.text.toString()
                 dbHandler.addText(TextBO(text, user?.id!!))
                 texts.add(text)
+                values = dbHandler.findText()!!
+                listView1!!.deferNotifyDataSetChanged()
             })
             .setNegativeButton("Cancel", null)
             .create()
         dialog.show()
+    }
+
+    fun setupListViewListener() {
+        var result: ListView = findViewById(R.id.text_list)
+
+        result.setOnItemClickListener { parent, view, position, id ->
+            val dialog = AlertDialog.Builder(this)
+                .setMessage(values.get(position).text)
+                .create()
+            dialog.show()
+
+        }
     }
 }
