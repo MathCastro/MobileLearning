@@ -36,7 +36,7 @@ class TextActivity : AppCompatActivity() {
 
             for(elem in values) {
                 var texto = elem.text!!
-                if(texto.length > 40) {
+                if(texto.length > 20) {
                     texts.add(texto.take(50) + "...")
                 } else {
                     texts.add(elem.text!!)
@@ -63,7 +63,11 @@ class TextActivity : AppCompatActivity() {
             .setPositiveButton("Add", DialogInterface.OnClickListener { dialog, which ->
                 val text = taskEditText.text.toString()
                 dbHandler.addText(TextBO(text, user?.id!!))
-                texts.add(text)
+                if(text.length > 20) {
+                    texts.add(text.take(50) + "...")
+                } else {
+                    texts.add(text)
+                }
                 values = dbHandler.findText()!!
                 listView1!!.deferNotifyDataSetChanged()
             })
