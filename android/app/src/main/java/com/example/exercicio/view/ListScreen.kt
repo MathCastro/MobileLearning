@@ -25,13 +25,14 @@ class ListScreen : AppCompatActivity() {
         setContentView(R.layout.activity_list_screen)
 
         var options: Array<String> = resources.getStringArray(R.array.options_array)
-        val descArr = arrayOf("Jerry", "", "", "", "")
+        val descArr = arrayOf("", "", "", "", "")
 
         val itemDataList = ArrayList<Map<String, Any>>()
 
-        var date = (this.calendarController.getLastCalendar(this,this)?.calendar!!).toLong()
-
-        descArr.set(0, getDate(date, "dd/MM/yyyy"))
+        if(this.calendarController.getLastCalendar(this,this)?.calendar != null) {
+            var date = (this.calendarController.getLastCalendar(this,this)?.calendar!!)
+            descArr.set(0, getDate(date.toLong(), "dd/MM/yyyy"))
+        }
 
         val titleLen = options.size
         for (i in 0 until titleLen) {

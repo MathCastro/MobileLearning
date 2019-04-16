@@ -131,6 +131,33 @@ class UserRepository(context: Context, name: String?, factory: SQLiteDatabase.Cu
         return findedUser
     }
 
+    fun findText(): MutableList<TextBO>? {
+        val query = "SELECT * FROM $TABLE_TEXT"
+
+        val db = this.writableDatabase
+
+        val cursor = db.rawQuery(query, null)
+
+        val findedText = mutableListOf<TextBO>()
+
+        if(cursor.moveToFirst()) {
+            while (cursor.moveToNext()) {
+
+                val id = Integer.parseInt(cursor.getString(0))
+                val text = cursor.getString(1)
+                val id_user = Integer.parseInt(cursor.getString(2))
+
+
+                findedText.add(TextBO(id, text, id_user))
+
+            }
+        }
+
+        cursor.close()
+        db.close()
+        return findedText
+    }
+
     fun findUserByEmail(email: String): UserBO? {
         val query = "SELECT * FROM $TABLE_USER WHERE $COLUMN_EMAIL = \"${email}\""
 

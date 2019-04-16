@@ -2,12 +2,61 @@ package com.example.exercicio.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.exercicio.R
+import android.content.DialogInterface
+import android.support.v7.app.AlertDialog
+import android.widget.EditText
+import com.example.exercicio.controller.UserController
+import com.example.exercicio.model.TextBO
+import com.example.exercicio.repository.UserRepository
+import android.widget.ArrayAdapter
+import android.widget.ListView
+
 
 class TextActivity : AppCompatActivity() {
+
+    var userController = UserController()
+    var texts = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_text)
+
+        val dbHandler = UserRepository(this, null, null, 1)
+
+        val values = dbHandler.findText()
+
+        val listView1 = findViewById(R.id.text_list) as ListView
+
+        if(values != null) {
+
+            for(elem in values) {
+                texts.add(elem.text!!)
+            }
+
+            val adapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_list_item_1, texts
+            )
+            listView1.setAdapter(adapter)
+        }
+    }
+
+    fun addText(view: View) {
+        val dbHandler = UserRepository(this, null, null, 1)
+        val taskEditText = EditText(this)
+        var user = dbHandler.findUserByEmail(userController.getLoggedUser(this)!!)
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("Add a new text")
+            .setView(taskEditText)
+            .setPositiveButton("Add", DialogInterface.OnClickListener { dialog, which ->
+                val text = taskEditText.text.toString()
+                dbHandler.addText(TextBO(text, user?.id!!))
+                texts.add(text)
+            })
+            .setNegativeButton("Cancel", null)
+            .create()
+        dialog.show()
     }
 }
