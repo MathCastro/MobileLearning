@@ -44,7 +44,7 @@ class IdiomActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 System.out.print(spinner.selectedItemPosition)
                 if(spinner.selectedItemPosition == 1) {
-                    updateResources(applicationContext , "en")
+                    updateResources(applicationContext, "en")
                     val intent = Intent(applicationContext, ListScreen::class.java)
                     startActivity(intent)
                 } else if(spinner.selectedItemPosition == 2) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Exercicio</string>
+    <string name="shared_pref">loggedUser</string>
     <string name="password">senha</string>
     <string name="calendar">CALENDÁRIO</string>
     <string name="calculator">CALCULADORA</string>
