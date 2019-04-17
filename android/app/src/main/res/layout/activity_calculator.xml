@@ -52,17 +52,19 @@
             android:text="X"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/mul" app:layout_constraintStart_toEndOf="@+id/menos"
-            android:layout_marginStart="28dp" android:layout_marginTop="40dp"
+            android:id="@+id/mul"
+            android:layout_marginTop="40dp"
             app:layout_constraintTop_toBottomOf="@+id/secondOperand" android:onClick="mul"
-            android:background="@color/colorPrimary" android:textColor="#fffde7"/>
+            android:background="@color/colorPrimary" android:textColor="#fffde7"
+            app:layout_constraintEnd_toStartOf="@+id/div" android:layout_marginEnd="8dp"/>
     <Button
             android:text="%"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/div" app:layout_constraintStart_toEndOf="@+id/mul"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="1.0" android:layout_marginTop="40dp"
+            android:id="@+id/div"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginTop="40dp"
             app:layout_constraintTop_toBottomOf="@+id/secondOperand" android:onClick="div"
-            android:background="@color/colorPrimary" android:textColor="#fffde7"/>
+            android:background="@color/colorPrimary" android:textColor="#fffde7"
+    />
 </android.support.constraint.ConstraintLayout>

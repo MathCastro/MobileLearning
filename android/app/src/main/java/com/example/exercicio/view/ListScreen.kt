@@ -31,7 +31,7 @@ class ListScreen : AppCompatActivity() {
 
         if(this.calendarController.getLastCalendar(this,this)?.calendar != null) {
             var date = (this.calendarController.getLastCalendar(this,this)?.calendar!!)
-            descArr.set(0, getDate(date.toLong(), "dd/MM/yyyy"))
+            descArr.set(0, date)
         }
 
         val titleLen = options.size
