@@ -36,8 +36,8 @@ class TextActivity : AppCompatActivity() {
 
             for(elem in values) {
                 var texto = elem.text!!
-                if(texto.length > 20) {
-                    texts.add(texto.take(50) + "...")
+                if (texto.length > 30) {
+                    texts.add(texto.take(30) + "...")
                 } else {
                     texts.add(elem.text!!)
                 }
@@ -62,14 +62,17 @@ class TextActivity : AppCompatActivity() {
             .setView(taskEditText)
             .setPositiveButton("Add", DialogInterface.OnClickListener { dialog, which ->
                 val text = taskEditText.text.toString()
-                dbHandler.addText(TextBO(text, user?.id!!))
-                if(text.length > 20) {
-                    texts.add(text.take(50) + "...")
-                } else {
-                    texts.add(text)
+                if(text.length > 0) {
+                    dbHandler.addText(TextBO(text, user?.id!!))
+                    if (text.length > 30) {
+                        texts.add(text.take(30) + "...")
+                    } else {
+                        texts.add(text)
+                    }
+
+                    values = dbHandler.findText()!!
+                    listView1!!.deferNotifyDataSetChanged()
                 }
-                values = dbHandler.findText()!!
-                listView1!!.deferNotifyDataSetChanged()
             })
             .setNegativeButton("Cancel", null)
             .create()
@@ -77,9 +80,9 @@ class TextActivity : AppCompatActivity() {
     }
 
     fun setupListViewListener() {
-        var result: ListView = findViewById(R.id.text_list)
+        var result = listView1
 
-        result.setOnItemClickListener { parent, view, position, id ->
+        result!!.setOnItemClickListener { parent, view, position, id ->
             val dialog = AlertDialog.Builder(this)
                 .setMessage(values.get(position).text)
                 .create()
