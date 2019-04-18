@@ -24,18 +24,26 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     fun sum(view: View) {
-        result?.setText((Integer.parseInt(firstOperand?.text.toString()) + Integer.parseInt(secondOperand?.text.toString())).toString())
+        if(firstOperand?.text.toString() != "" && secondOperand?.text.toString().toString() != "") {
+            result?.setText((Integer.parseInt(firstOperand?.text.toString()) + Integer.parseInt(secondOperand?.text.toString())).toString())
+        }
     }
 
     fun sub(view: View) {
-        result?.setText((Integer.parseInt(firstOperand?.text.toString()) - Integer.parseInt(secondOperand?.text.toString())).toString())
+        if(firstOperand?.text.toString() != "" && secondOperand?.text.toString().toString() != "") {
+            result?.setText((Integer.parseInt(firstOperand?.text.toString()) - Integer.parseInt(secondOperand?.text.toString())).toString())
+        }
     }
 
     fun mul(view: View) {
-        result?.setText((Integer.parseInt(firstOperand?.text.toString()) * Integer.parseInt(secondOperand?.text.toString())).toString())
+        if(firstOperand?.text.toString() != "" && secondOperand?.text.toString().toString() != ""){
+            result?.setText((Integer.parseInt(firstOperand?.text.toString()) * Integer.parseInt(secondOperand?.text.toString())).toString())
+        }
     }
 
     fun div(view: View) {
-        result?.setText((Integer.parseInt(firstOperand?.text.toString()) / Integer.parseInt(secondOperand?.text.toString())).toString())
+        if(firstOperand?.text.toString() != "" && secondOperand?.text.toString().toString() != "") {
+            result?.setText((Integer.parseInt(firstOperand?.text.toString()) / Integer.parseInt(secondOperand?.text.toString())).toString())
+        }
     }
 }

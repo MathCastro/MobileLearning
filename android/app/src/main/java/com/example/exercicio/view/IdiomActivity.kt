@@ -45,10 +45,12 @@ class IdiomActivity : AppCompatActivity() {
                 System.out.print(spinner.selectedItemPosition)
                 if(spinner.selectedItemPosition == 1) {
                     updateResources(applicationContext, "en")
+                    putIdiom("English")
                     val intent = Intent(applicationContext, ListScreen::class.java)
                     startActivity(intent)
                 } else if(spinner.selectedItemPosition == 2) {
                     updateResources(applicationContext, "pt")
+                    putIdiom("Portuguese")
                     val intent = Intent(applicationContext, ListScreen::class.java)
                     startActivity(intent)
                 }
@@ -95,6 +97,15 @@ class IdiomActivity : AppCompatActivity() {
             resources.updateConfiguration(configuration, resources.getDisplayMetrics())
         }
         return contextFun
+    }
+
+    fun putIdiom(idiom: String) {
+        val sharedPref = this?.getSharedPreferences(
+            this.getString(R.string.shared_pref), Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putString("idiom", idiom)
+            commit()
+        }
     }
 
 }

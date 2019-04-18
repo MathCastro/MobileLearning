@@ -1,5 +1,6 @@
 package com.example.exercicio.view
 
+import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -32,6 +33,10 @@ class ListScreen : AppCompatActivity() {
         if(this.calendarController.getLastCalendar(this,this)?.calendar != null) {
             var date = (this.calendarController.getLastCalendar(this,this)?.calendar!!)
             descArr.set(0, date)
+        }
+
+        if(getIdiom() != null) {
+            descArr.set(2, getIdiom()!!)
         }
 
         val titleLen = options.size
@@ -101,6 +106,12 @@ class ListScreen : AppCompatActivity() {
         val calendar = Calendar.getInstance()
         calendar.setTimeInMillis(milliSeconds)
         return formatter.format(calendar.getTime())
+    }
+
+    fun getIdiom(): String? {
+        val sharedPref = this?.getSharedPreferences(
+            this.getString(R.string.shared_pref), Context.MODE_PRIVATE) ?: return null
+        return sharedPref.getString("idiom", "")
     }
 
 }
