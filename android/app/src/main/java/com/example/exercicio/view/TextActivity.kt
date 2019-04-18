@@ -12,7 +12,6 @@ import com.example.exercicio.model.TextBO
 import com.example.exercicio.repository.UserRepository
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.TextView
 
 
 class TextActivity : AppCompatActivity() {
@@ -25,6 +24,14 @@ class TextActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_text)
+
+        //actionbar
+        val actionbar = supportActionBar
+        //set actionbar title
+        actionbar!!.title = "New Activity"
+        //set back button
+        actionbar.setDisplayHomeAsUpEnabled(true)
+        actionbar.setDisplayHomeAsUpEnabled(true)
 
         val dbHandler = UserRepository(this, null, null, 1)
 
@@ -89,5 +96,10 @@ class TextActivity : AppCompatActivity() {
             dialog.show()
 
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

@@ -73,6 +73,43 @@ class ListScreen : AppCompatActivity() {
         }
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        var options: Array<String> = resources.getStringArray(R.array.options_array)
+        val descArr = arrayOf("", "", "", "", "")
+
+        val itemDataList = ArrayList<Map<String, Any>>()
+
+        if(this.calendarController.getLastCalendar(this,this)?.calendar != null) {
+            var date = (this.calendarController.getLastCalendar(this,this)?.calendar!!)
+            descArr.set(0, date)
+        }
+
+        if(getIdiom() != null) {
+            descArr.set(2, getIdiom()!!)
+        }
+
+        val titleLen = options.size
+        for (i in 0 until titleLen) {
+            val listItemMap = HashMap<String, Any>()
+            listItemMap["title"] = options[i]
+            listItemMap["description"] = descArr[i]
+            itemDataList.add(listItemMap)
+        }
+
+        val simpleAdapter = SimpleAdapter(
+            this, itemDataList, android.R.layout.simple_list_item_2,
+            arrayOf("title", "description"), intArrayOf(android.R.id.text1, android.R.id.text2)
+        )
+
+        val prodAdapter = ArrayAdapter<String>(this,
+            android.R.layout.simple_list_item_1, options)
+
+        val list: ListView = findViewById(R.id.initial_list)
+
+        list.adapter = simpleAdapter
+    }
+
     fun calendar(view: View? = null) {
         val intent = Intent(this, CalendarActivity::class.java)
         startActivity(intent)

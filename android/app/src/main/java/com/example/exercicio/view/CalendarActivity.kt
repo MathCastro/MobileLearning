@@ -25,6 +25,14 @@ class CalendarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
 
+        //actionbar
+        val actionbar = supportActionBar
+        //set actionbar title
+        actionbar!!.title = "New Activity"
+        //set back button
+        actionbar.setDisplayHomeAsUpEnabled(true)
+        actionbar.setDisplayHomeAsUpEnabled(true)
+
         var calendar = findViewById<CalendarView>(R.id.calendarView)
         calendar.setOnDateChangeListener(CalendarView.OnDateChangeListener { view, year, month, dayOfMonth ->
             val convertMonth = month + 1
@@ -40,8 +48,7 @@ class CalendarActivity : AppCompatActivity() {
             val dateTime = calendar?.getDate().toString()
             this.calendarController.addCalendar(this, getDate(dateTime.toLong(), "dd/MM/yyyy"), this)
         }
-        val intent = Intent(this, ListScreen::class.java)
-        startActivity(intent)
+        onBackPressed()
     }
 
     fun getDate(milliSeconds: Long, dateFormat: String): String {
@@ -52,6 +59,11 @@ class CalendarActivity : AppCompatActivity() {
         val calendar = Calendar.getInstance()
         calendar.setTimeInMillis(milliSeconds)
         return formatter.format(calendar.getTime())
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 }

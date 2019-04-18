@@ -23,6 +23,14 @@ class IdiomActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_idiom)
 
+        //actionbar
+        val actionbar = supportActionBar
+        //set actionbar title
+        actionbar!!.title = "New Activity"
+        //set back button
+        actionbar.setDisplayHomeAsUpEnabled(true)
+        actionbar.setDisplayHomeAsUpEnabled(true)
+
         val spinner: Spinner = findViewById(R.id.spinner)
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(
@@ -46,13 +54,11 @@ class IdiomActivity : AppCompatActivity() {
                 if(spinner.selectedItemPosition == 1) {
                     updateResources(applicationContext, "en")
                     putIdiom("English")
-                    val intent = Intent(applicationContext, ListScreen::class.java)
-                    startActivity(intent)
+                    onBackPressed()
                 } else if(spinner.selectedItemPosition == 2) {
                     updateResources(applicationContext, "pt")
                     putIdiom("Portuguese")
-                    val intent = Intent(applicationContext, ListScreen::class.java)
-                    startActivity(intent)
+                    onBackPressed()
                 }
 
             }
@@ -106,6 +112,11 @@ class IdiomActivity : AppCompatActivity() {
             putString("idiom", idiom)
             commit()
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 }
