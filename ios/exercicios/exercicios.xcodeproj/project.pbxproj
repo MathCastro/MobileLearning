@@ -15,6 +15,7 @@
 		D5B9750E226773F700F972E0 /* exerciciosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B9750D226773F700F972E0 /* exerciciosTests.swift */; };
 		D5B97519226773F700F972E0 /* exerciciosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B97518226773F700F972E0 /* exerciciosUITests.swift */; };
 		D5DC137722709548002F15AD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DC137622709548002F15AD /* libsqlite3.tbd */; };
+		D5DC137C22709664002F15AD /* UserBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DC137B22709664002F15AD /* UserBO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		D5B97518226773F700F972E0 /* exerciciosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exerciciosUITests.swift; sourceTree = "<group>"; };
 		D5B9751A226773F700F972E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5DC137622709548002F15AD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		D5DC137B22709664002F15AD /* UserBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		D5B974F7226773F400F972E0 /* exercicios */ = {
 			isa = PBXGroup;
 			children = (
+				D5DC137822709616002F15AD /* Model */,
 				D5B974F8226773F400F972E0 /* AppDelegate.swift */,
 				D5B974FA226773F400F972E0 /* ViewController.swift */,
 				D5B974FC226773F400F972E0 /* Main.storyboard */,
@@ -135,6 +138,14 @@
 				D5DC137622709548002F15AD /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5DC137822709616002F15AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D5DC137B22709664002F15AD /* UserBO.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +281,7 @@
 			files = (
 				D5B974FB226773F400F972E0 /* ViewController.swift in Sources */,
 				D5B974F9226773F400F972E0 /* AppDelegate.swift in Sources */,
+				D5DC137C22709664002F15AD /* UserBO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
