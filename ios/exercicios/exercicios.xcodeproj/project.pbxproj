@@ -14,6 +14,7 @@
 		D5B97503226773F700F972E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B97501226773F700F972E0 /* LaunchScreen.storyboard */; };
 		D5B9750E226773F700F972E0 /* exerciciosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B9750D226773F700F972E0 /* exerciciosTests.swift */; };
 		D5B97519226773F700F972E0 /* exerciciosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B97518226773F700F972E0 /* exerciciosUITests.swift */; };
+		D5DC137722709548002F15AD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DC137622709548002F15AD /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		D5B97514226773F700F972E0 /* exerciciosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = exerciciosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B97518226773F700F972E0 /* exerciciosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exerciciosUITests.swift; sourceTree = "<group>"; };
 		D5B9751A226773F700F972E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5DC137622709548002F15AD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5DC137722709548002F15AD /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +84,7 @@
 				D5B9750C226773F700F972E0 /* exerciciosTests */,
 				D5B97517226773F700F972E0 /* exerciciosUITests */,
 				D5B974F6226773F400F972E0 /* Products */,
+				D5DC137522709548002F15AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +127,14 @@
 				D5B9751A226773F700F972E0 /* Info.plist */,
 			);
 			path = exerciciosUITests;
+			sourceTree = "<group>";
+		};
+		D5DC137522709548002F15AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5DC137622709548002F15AD /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
