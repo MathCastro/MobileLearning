@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D515A7C42271F6D200F2756C /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515A7C32271F6D200F2756C /* UserRepository.swift */; };
 		D5B974F9226773F400F972E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B974F8226773F400F972E0 /* AppDelegate.swift */; };
 		D5B974FB226773F400F972E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B974FA226773F400F972E0 /* ViewController.swift */; };
 		D5B974FE226773F400F972E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B974FC226773F400F972E0 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D515A7C32271F6D200F2756C /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		D5B974F5226773F400F972E0 /* exercicios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = exercicios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B974F8226773F400F972E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5B974FA226773F400F972E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D515A7C22271F6B500F2756C /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				D515A7C32271F6D200F2756C /* UserRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		D5B974EC226773F400F972E0 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +113,7 @@
 		D5B974F7226773F400F972E0 /* exercicios */ = {
 			isa = PBXGroup;
 			children = (
+				D515A7C22271F6B500F2756C /* Repository */,
 				D5DC137822709616002F15AD /* Model */,
 				D5B974F8226773F400F972E0 /* AppDelegate.swift */,
 				D5B974FA226773F400F972E0 /* ViewController.swift */,
@@ -281,6 +292,7 @@
 			files = (
 				D5B974FB226773F400F972E0 /* ViewController.swift in Sources */,
 				D5B974F9226773F400F972E0 /* AppDelegate.swift in Sources */,
+				D515A7C42271F6D200F2756C /* UserRepository.swift in Sources */,
 				D5DC137C22709664002F15AD /* UserBO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
