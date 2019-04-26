@@ -17,6 +17,7 @@
 		D5B97519226773F700F972E0 /* exerciciosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B97518226773F700F972E0 /* exerciciosUITests.swift */; };
 		D5DC137722709548002F15AD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DC137622709548002F15AD /* libsqlite3.tbd */; };
 		D5DC137C22709664002F15AD /* UserBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DC137B22709664002F15AD /* UserBO.swift */; };
+		D5E2B07022733A220025A128 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E2B06F22733A220025A128 /* ListController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		D5B9751A226773F700F972E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5DC137622709548002F15AD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		D5DC137B22709664002F15AD /* UserBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBO.swift; sourceTree = "<group>"; };
+		D5E2B06F22733A220025A128 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				D5B974FF226773F700F972E0 /* Assets.xcassets */,
 				D5B97501226773F700F972E0 /* LaunchScreen.storyboard */,
 				D5B97504226773F700F972E0 /* Info.plist */,
+				D5E2B06F22733A220025A128 /* ListController.swift */,
 			);
 			path = exercicios;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5B974FB226773F400F972E0 /* ViewController.swift in Sources */,
+				D5E2B07022733A220025A128 /* ListController.swift in Sources */,
 				D5B974F9226773F400F972E0 /* AppDelegate.swift in Sources */,
 				D515A7C42271F6D200F2756C /* UserRepository.swift in Sources */,
 				D5DC137C22709664002F15AD /* UserBO.swift in Sources */,

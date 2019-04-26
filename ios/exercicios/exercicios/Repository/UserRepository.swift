@@ -59,6 +59,91 @@ class UserRepository {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("failure inserting hero: \(errmsg)")
             return
+        } else {
+            print("insert sucess")
         }
+    }
+    
+    func readValues(){
+        
+        //this is our select query
+        let queryString = "SELECT * FROM Users"
+        
+        //statement pointer
+        var stmt:OpaquePointer?
+        
+        //preparing the query
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        //traversing through all the records
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            let id = sqlite3_column_int(stmt, 0)
+            let email = String(cString: sqlite3_column_text(stmt, 1))
+            let password = String(cString: sqlite3_column_text(stmt, 2))
+            
+            
+            print("User: \(id), \(email), \(password)");
+            //adding values to list
+        }
+    }
+    
+    func findUserByEmail(userEmail: String) -> UserBO? {
+        
+        //this is our select query
+        let queryString = "SELECT * FROM Users where email = '\(userEmail)' limit 1"
+        
+        //statement pointer
+        var stmt:OpaquePointer?
+        
+        //preparing the query
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return nil
+        }
+        
+        //traversing through all the records
+        if(sqlite3_step(stmt) == SQLITE_ROW){
+            let id = sqlite3_column_int(stmt, 0)
+            let email = String(cString: sqlite3_column_text(stmt, 1))
+            let password = String(cString: sqlite3_column_text(stmt, 2))
+            
+            let user = UserBO(id: Int(id), email: email, password: password)
+            
+            return user;
+            //adding values to list
+        }
+        return nil;
+    }
+    
+    func login(userEmail: String, userPassword: String) -> Bool {
+        
+        //this is our select query
+        let queryString = "SELECT * FROM Users where email = '\(userEmail)' and password = '\(userPassword)' limit 1"
+        
+        //statement pointer
+        var stmt:OpaquePointer?
+        
+        //preparing the query
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return false;
+        }
+        
+        //traversing through all the records
+        if(sqlite3_step(stmt) == SQLITE_ROW){
+            let id = sqlite3_column_int(stmt, 0)
+            let email = String(cString: sqlite3_column_text(stmt, 1))
+            let password = String(cString: sqlite3_column_text(stmt, 2))
+            
+            return true;
+            //adding values to list
+        }
+        return false;
     }
 }
