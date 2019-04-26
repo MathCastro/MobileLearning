@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D515A7C42271F6D200F2756C /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D515A7C32271F6D200F2756C /* UserRepository.swift */; };
+		D5394E6E227347E000F83E79 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5394E6D227347E000F83E79 /* TableViewController.swift */; };
 		D5B974F9226773F400F972E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B974F8226773F400F972E0 /* AppDelegate.swift */; };
 		D5B974FB226773F400F972E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B974FA226773F400F972E0 /* ViewController.swift */; };
 		D5B974FE226773F400F972E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B974FC226773F400F972E0 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		D515A7C32271F6D200F2756C /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		D5394E6D227347E000F83E79 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		D5B974F5226773F400F972E0 /* exercicios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = exercicios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B974F8226773F400F972E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5B974FA226773F400F972E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				D5B97501226773F700F972E0 /* LaunchScreen.storyboard */,
 				D5B97504226773F700F972E0 /* Info.plist */,
 				D5E2B06F22733A220025A128 /* ListController.swift */,
+				D5394E6D227347E000F83E79 /* TableViewController.swift */,
 			);
 			path = exercicios;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5B974FB226773F400F972E0 /* ViewController.swift in Sources */,
+				D5394E6E227347E000F83E79 /* TableViewController.swift in Sources */,
 				D5E2B07022733A220025A128 /* ListController.swift in Sources */,
 				D5B974F9226773F400F972E0 /* AppDelegate.swift in Sources */,
 				D515A7C42271F6D200F2756C /* UserRepository.swift in Sources */,

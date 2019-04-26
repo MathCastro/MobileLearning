@@ -137,9 +137,6 @@ class UserRepository {
         
         //traversing through all the records
         if(sqlite3_step(stmt) == SQLITE_ROW){
-            let id = sqlite3_column_int(stmt, 0)
-            let email = String(cString: sqlite3_column_text(stmt, 1))
-            let password = String(cString: sqlite3_column_text(stmt, 2))
             
             return true;
             //adding values to list
